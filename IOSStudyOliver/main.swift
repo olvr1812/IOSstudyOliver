@@ -637,8 +637,15 @@ massIndex(height: 1.76, mass: 74)
 
 func howManyDaysInYear(year: Int) {
     if year % 400 == 0 {
-        print("Год весокосный")
+        print("Год весокосный 366 дней")
     } else if year % 100 == 0 {
-        print("Год не весокосный")
+        print("Год не весокосный 365 дней")
+    } else if year % 4 == 0 {
+        print("Год весокосный 366 дней")
+    } else {
+        print("Год не весокосный 365 дней")
     }
 }
+
+
+howManyDaysInYear(year: 176)

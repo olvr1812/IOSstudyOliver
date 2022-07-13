@@ -472,9 +472,20 @@ unknownProgress2(n: 4)
 
 // 23.Вычислить : 1+2+4+8+...+ 2 в 10 степени.
 
-func sumInTen() {
+func sumNumsProgress() {
+    var count: Double = 1
+    var sum: Double = 1
+    
+    while count <= pow(2, 10) {
+        sum += count * 2
+        count = 2 * count
+    }
+    
+    print(sum)
     
 }
+
+sumNumsProgress()
 
 // 24. Вычислить: (1+2)*(1+2+3)*...*(1+2+...+10).
 
@@ -490,3 +501,55 @@ for i in 2...10 {
     print(productSumFromNum)
 }
 
+//25. Даны действительное (а) и натуральное (n). вычислить: a(a+1)(a+2)...(a+n-1)
+
+func progressSumAndProduct(a: Double, n: Int) {
+    var sum: Double = 0
+    var prod: Double = 1
+    for i in 0..<n {
+        sum = a + Double(i)
+        prod *= sum
+    }
+    
+    
+    
+    print(prod)
+}
+
+progressSumAndProduct(a: 5.2, n: 4)
+
+// 26. Даны действительно х и натуральное n. вычислить: sin x + sin x в квадрате + ... sin x в степени n.
+
+func sumSinSquare(x: Double, n: Int) {
+    var sinSum: Double = 0
+    
+    for i in 1...n {
+        sinSum += pow(sin(x), Double(i))
+    }
+    
+    print(sinSum)
+}
+
+// 27. У первокласника пети m рублей.Мороженое стоит k рублей. Петя решил наесться досыта мороженого, для этого он покупал по одному мороженому и съедал его до тех пор, пока ему хватало денег. Как пете узнать, сколько денег останется у него в конце концов? учтите, что петя делить еще не умеет, а умеет только вычитать и складывать. сколько мороженых он может съесть?.
+
+func iceCreamAndPetia(money m: Double, cost k: Double) {
+    var money = m
+    var quantityIcecream = 0
+
+    while Int(money) / Int(k) >= 1 {
+        money -= k
+        quantityIcecream += 1
+    }
+    
+    print(quantityIcecream)
+}
+
+
+iceCreamAndPetia(money: 100.9, cost: 5)
+
+
+// 28. Бизнессмен взял ссуду m тысяч рублей в банке под 20% годовых. через сколько лет его долг превысит s тысяч рублей, если за это время он не будет отдавать долг.
+
+func creditForBussinesman(m: Double, s: Double) {
+    
+}

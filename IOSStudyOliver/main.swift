@@ -551,5 +551,94 @@ iceCreamAndPetia(money: 100.9, cost: 5)
 // 28. Бизнессмен взял ссуду m тысяч рублей в банке под 20% годовых. через сколько лет его долг превысит s тысяч рублей, если за это время он не будет отдавать долг.
 
 func creditForBussinesman(m: Double, s: Double) {
+    var credit = m
+    var years = 0
+    let controlSum = 1000 * s
     
+    while credit <= controlSum {
+        credit += credit * 0.2
+        years += 1
+    }
+    
+    let y = (round(100 * credit) / 100)
+    
+    print("Через \(years) лет долг привысит \(controlSum) и составит \(y)")
+}
+
+creditForBussinesman(m: 1000, s: 100)
+
+// 29. C помощью оператора while напишите программу вывода всех четных чисел в диапазоне от 2 до 100 включительно.
+
+func oneToIOO() {
+    var n = [Int]()
+    var count: Int = 2
+    
+    while count <= 100 {
+        if count % 2 == 0 {
+            n.append(count)
+        }
+        count += 1
+    }
+    
+    print(n)
+}
+
+oneToIOO()
+
+// Интересные задачки
+
+// 1. Функция расчета максимальной мощности в зависимости от сечения кабеля. В консоль вывести текст.
+
+func maxPfromI(p: Double) {
+}
+
+// 2. Функция проверки бортовых систем самолета на исправность. В одной функции 3 бортовые системы. Вывести текст на экран.
+
+func checkAircraftSys(Sys1: Bool, Sys2: Bool, Sys3: Bool) {
+    
+}
+
+// 3. Каждому дню недели присвоена цифра, от 1 до 7. Сделать функцию, которая при вводе числа, будет писать в консоль день недели.
+
+func dayOfWeek(numOfDay: Int) {
+    switch numOfDay {
+    case 1: print("Понедельник")
+    case 2: print("Вторник")
+    case 3: print("Среда")
+    case 4: print("Четверг")
+    case 5: print("Пятница")
+    case 6: print("Суббота")
+    case 7: print("Восекресенье")
+    default: print("Допустимое значение от 1 до 7")
+    }
+}
+
+dayOfWeek(numOfDay: 5)
+dayOfWeek(numOfDay: 8)
+
+// 4. Сделать функцию: расчет индекса массы тела.
+
+func massIndex(height: Double, mass: Double) {
+    let indexOfMass = mass / pow(height, 2)
+    
+    switch indexOfMass {
+    case 0..<25.0: print("Индекс: \(indexOfMass). Это норма")
+    case 25.0..<30.0: print("Индекс: \(indexOfMass). Избыточный вес")
+    case 30.0..<35.0: print("Индекс: \(indexOfMass). I степень ожирения")
+    case 35.0..<40.0: print("Индекс: \(indexOfMass). II степень ожирения")
+    case _ where indexOfMass > 40.0: print("Индекс: \(indexOfMass). II степень ожирения")
+    default: print("Индекс не может быть отрицательным")
+    }
+}
+
+massIndex(height: 1.76, mass: 74)
+
+//5. Сделать функцию, которая будет считать количество дней в году. Важно учесть високосный год.
+
+func howManyDaysInYear(year: Int) {
+    if year % 400 == 0 {
+        print("Год весокосный")
+    } else if year % 100 == 0 {
+        print("Год не весокосный")
+    }
 }

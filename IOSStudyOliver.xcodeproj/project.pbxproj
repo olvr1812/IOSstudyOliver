@@ -58,8 +58,16 @@
 			isa = PBXGroup;
 			children = (
 				F920A012287EA75A00E0393B /* main.swift */,
+				F972DB51287F338C00F42063 /* New Group */,
 			);
 			path = IOSStudyOliver;
+			sourceTree = "<group>";
+		};
+		F972DB51287F338C00F42063 /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

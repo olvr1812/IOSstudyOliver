@@ -589,14 +589,54 @@ oneToIOO()
 
 // 1. Функция расчета максимальной мощности в зависимости от сечения кабеля. В консоль вывести текст.
 
-func maxPfromI(p: Double) {
+func maxPfromCabelCross(maxP p: Double) {
+    
+    switch p {
+    case 0...4.1: print("Сечение кабеля 1,5 мм в кв.")
+    case 4.2...5.9: print("Сечение кабеля 2,5 мм в кв.")
+    case 6...8.3: print("Сечение кабеля 4 мм в кв.")
+    case 8.4...10.1: print("Сечение кабеля 6 мм в кв.")
+    case 10.2...15.4: print("Сечение кабеля 10 мм в кв.")
+    default: print("Введено не корректное значение")
+    }
+    
 }
+
+maxPfromCabelCross(maxP: 12)
+maxPfromCabelCross(maxP: 16)
+maxPfromCabelCross(maxP: 3.2)
 
 // 2. Функция проверки бортовых систем самолета на исправность. В одной функции 3 бортовые системы. Вывести текст на экран.
 
 func checkAircraftSys(Sys1: Bool, Sys2: Bool, Sys3: Bool) {
     
+    var checkCount: Int = 0
+    if Sys1 {
+        print("Сисстема 1 в нормальном режиме")
+        checkCount += 1
+    } else { print("Отказ систесмы 1")}
+    
+    if Sys2 {
+        print("Сисстема 2 в нормальном режиме")
+        checkCount += 1
+    } else { print("Отказ систесмы 2")}
+    
+    if Sys3 {
+        print("Сисстема 3 в нормальном режиме")
+        checkCount += 1
+    } else { print("Отказ систесмы 3")}
+    
+    if checkCount < 2 {
+        print("Полет не возможен")
+    } else { print("К полету готов")}
 }
+
+checkAircraftSys(Sys1: true, Sys2: false, Sys3: false)
+
+checkAircraftSys(Sys1: false, Sys2: true, Sys3: true)
+
+checkAircraftSys(Sys1: true, Sys2: false, Sys3: true)
+
 
 // 3. Каждому дню недели присвоена цифра, от 1 до 7. Сделать функцию, которая при вводе числа, будет писать в консоль день недели.
 
@@ -626,7 +666,7 @@ func massIndex(height: Double, mass: Double) {
     case 25.0..<30.0: print("Индекс: \(indexOfMass). Избыточный вес")
     case 30.0..<35.0: print("Индекс: \(indexOfMass). I степень ожирения")
     case 35.0..<40.0: print("Индекс: \(indexOfMass). II степень ожирения")
-    case _ where indexOfMass > 40.0: print("Индекс: \(indexOfMass). II степень ожирения")
+    case _ where indexOfMass > 40.0: print("Индекс: \(indexOfMass). III степень ожирения")
     default: print("Индекс не может быть отрицательным")
     }
 }
@@ -649,3 +689,111 @@ func howManyDaysInYear(year: Int) {
 
 
 howManyDaysInYear(year: 176)
+
+// Написать функцию, которая вычисляет объем цилиндра. Параметрами функции должны быть радиус и высота цилиндра.
+
+func volumeCylinder(height h: Double, radius r: Double) {
+    let cylinderSection: Double = Double.pi * pow(r, 2)
+    let volumeOfCylinder = cylinderSection * h
+    print("Объем цилиндра = \(volumeOfCylinder)")
+}
+
+volumeCylinder(height: 14.5, radius: 3.1)
+
+//Написать функцию, которая возвращает максимальное из двух целых чисел, полученных в качестве аргумента.
+
+func itsMore(first: Double, second: Double) -> Double {
+    if first > second {
+        return first
+    } else if second > first {
+        return second
+    } else { print("Числа одинаковые")
+        return first
+    }
+}
+
+print(itsMore(first: 146.2, second: 145.5))
+print(itsMore(first: 145.2, second: 145.2))
+
+
+// Написать функцию, которая сравнивает два целых числа и возвращает результат сравнения в виде одного из знаков: >, < или =.
+
+func comprasion(first: Int, second: Int) -> String {
+    if first > second {
+        return ">"
+    } else if second > first {
+        return "<"
+    } else {
+        return "="
+    }
+}
+
+print(comprasion(first: 12, second: 6))
+print(comprasion(first: 12, second: 13))
+print(comprasion(first: 12, second: 12))
+
+//Написать функцию, которая вычисляет сопротивление цепи, состоящей из двух резисторов. Параметрами функции являются величины сопротивлений и тип соединения (последовательное или параллельное). Функция должна проверять корректность параметров: если неверно указан тип соединения, то функция должна возвращать -1.
+
+func resistense(r1: Double, r2: Double, type: String) -> Double {
+    var R: Double?
+    if type == "Параллельное" {
+        R = (r1 * r2) / (r1 + r2)
+    } else if type == "Последовательное" {
+        R = r1 + r2
+    } else {
+        print("Введен не корректный тип")
+        return -1
+    }
+    
+    return R!
+}
+
+// Написать функцию Procent, которая возвращает процент от полученного в качестве аргумента числа.
+
+print(resistense(r1: 14, r2: 12, type: "Параллельное"))
+print(resistense(r1: 20, r2: 11, type: "Последовательное"))
+print(resistense(r1: 11, r2: 25, type: "Поочередное"))
+
+func procent(procent: Int, dig: Double) {
+    print(dig / 100 * Double(procent))
+}
+
+procent(procent: 12, dig: 100)
+
+// Написать функцию Dohod, которая вычисляет доход по вкладу. Исходными данными для функции являются: величина вклада, процентная ставка (годовых) и срок вклада (количество дней).
+
+func dohod(deposit: Double, percent: Double, days: Int) {
+    let perDay = percent / 365
+    var myMoney = deposit
+    
+    for _ in 1...days {
+        myMoney += myMoney / 100 * perDay
+    }
+    
+    print("За \(days) дней сумма вклада составит \(Double(round(1000 * myMoney) / 1000)) рублей")
+}
+
+
+dohod(deposit: 1000, percent: 10, days: 365)
+
+//Написать функцию, которая выводит на экран строку, состоящую из звездочек. Длина строки (количество звездочек) является параметром функции.
+
+func starsString(quantityStars x: Int) {
+    var myStars = ""
+    for _ in 1...x {
+        myStars += "*"
+    }
+    print(myStars)
+}
+
+starsString(quantityStars: 12)
+
+
+//Написать функцию, которая вычисляет объем и площадь поверхности параллелепипеда.
+
+func parallelepiped(a: Double, b: Double, c: Double) {
+    print("Площадь = \(2 * (a * b + a * c + c * b))")
+    print("Объем = \(a * b * c)")
+}
+
+parallelepiped(a: 12, b: 12, c: 12)
